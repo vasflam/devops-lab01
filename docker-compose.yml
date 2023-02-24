@@ -4,6 +4,7 @@ services:
       image: mariadb:latest
       volumes:
         - ./docker/mariadb/entrypoint:/docker-entrypoint-initdb.d
+        - mariadb:/var/lib/mysql
       environment:
         #- MARIADB_ROOT_PASSWORD_HASH=*E56A114692FE0DE073F9A1DD68A00EEB9703F3F1
         - MARIADB_ROOT_PASSWORD=sup3rs3cr3t
@@ -24,4 +25,5 @@ services:
         - ./docker/nginx/web:/usr/share/nginx/html
       ports:
         - 8080:80
-
+volumes:
+  mariadb:
